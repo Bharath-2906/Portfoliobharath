@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharath R Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #fd79a8;
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --text-color: #2d3436;
+            --accent-color: #00cec9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.8;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+         .about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.profile-pic img {
+    width: 300px; /* Set width for rectangle shape */
+    height: 200px; /* Set height for rectangle shape */
+    border-radius: 10px; /* Slightly rounded corners */
+    object-fit: cover; /* Ensures image fits the container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+        .project-grid, .certificate-grid, .internship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card, .certificate-card, .internship-card {
+            background-color: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover, .certificate-card:hover, .internship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+    background-image: url('../images/my-project-image.jpg'); /* '..' moves one level up to find the image */
+    background-size: cover;
+    background-position: center;
+    width: 600px;
+    height: 300px;
+}
+
+        }
+
+        .project-info, .certificate-info, .internship-info {
+            padding: 20px;
+        }
+
+        .project-title, .certificate-title, .internship-title {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-item {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+         .certificate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Occupies full viewport height */
+    background-color: #f2f2f2;
+}
+        .internship-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .internship-card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: stretch;
+        }
+
+        .internship-image {
+            width: 30%;
+            object-fit: cover;
+        }
+
+        .internship-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .internship-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .internship-company {
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .internship-date {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .internship-description {
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .internship-card {
+                flex-direction: column;
+            }
+
+            .internship-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+.certificate-image {
+    max-width: 80%; /* Adjust as needed */
+    max-height: 80%; /* Adjust as needed */
+    display: block; /* Ensures image is a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+}
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .project-grid, .certificate-grid, .internship-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm Bharath R</h1>
+                <p>A passionate Software Engineer and Data Analyst skilled in web development, data analysis, and cloud technologies.</p>
+                <a href="#projects" class="btn">See My Work</a>
+            </div>
+        </section>
+
+        <section id="about">
+       <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="profile-pic">
+                <img src="bha2.png" alt="Bharath R Profile Picture">
+            </div>
+            <div class="card">
+                <p>A motivated and proficient graduate in computer science and engineering with an impressive knowledge in web technologies, software engineering, and data analysis. My time at PES University and SDM Polytechnic has given me technological skills in a variety of areas, including Python, Java, MySQL, Docker, AWS, and more. I'm enthusiastic about using my abilities to create original solutions and streamline procedures. Prompt Engineering for Chat-GPT and Advanced Data Analysis are two of my credentials that demonstrate my dedication to lifelong learning. Applying my technical and analytical skills to worthwhile projects and helping to create significant solutions excites me.</p>
+            </div>
+        </div>
+     </div>
+        </section>
+
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('drone.jpeg');"></div>
+
+                        <div class="project-info">
+                            <h3 class="project-title">Advanced Weapon Detection Using Drones</h3>
+                            <p>A real-time solution for soldiers on the border, helping to identify and recognize enemy weapons quickly and accurately. This technology aids in tactical decision-making and enhances security operations.</p>
+                    <span class="badge">Yolo v8</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">Machine Learning</span>
+                    <span class="badge">Artificial Intelligence</span>
+                    <span class="badge">Deep Learning</span>
+
+                        </div>
+
+
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('soldier.jpeg');"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">TroopGuard: Lora-watch for Tactical Combat Care</h3>
+                            <p>Utilized GPS and wearable devices to transmit real-time vital signals, identify critical events, and improve battlefield communication and decision-making</p>
+                            <div>
+                <span class="badge">Python</span>
+                <span class="badge">Excel</span>
+                <span class="badge">Sensor</span>
+            </div>
+
+
+                    </div>
+
+                   
+
+                    </div>
+<div class="project-card">
+                        <div class="project-image" style="background-image: url('envinoment.jpeg');"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Global Awareness Website</h3>
+                            <p>A platform designed to enhance knowledge through images and videos, making global issues more accessible and engaging.</p>
+                            <div>
+                    <span class="badge">HTML</span>
+                    <span class="badge">JavaScript</span>
+                    <span class="badge">CSS</span>
+                    <span class="badge">Framework</span>
+                    <span class="badge">UI</span>
+                </div>
+
+</div>
+
+          
+
+            </div>
+        </section>
+
+        <section id="certificates">
+    <div class="container">
+        <h2 class="section-title">Certificates</h2>
+        <div class="certificate-grid">
+            <div class="certificate-card">
+                <img src="UI and UX.png" alt="UI and UX Certification" class="certificate-image" style="width:100%; height:auto;">
+                <div class="certificate-info">
+                    <h3 class="certificate-title">UI and UX Certification</h3>
+                    <p>Completed a certification course on UI and UX design principles.</p>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <img src="C:\Users\Bharath\OneDrive\Documents\data anaylsis with excel.png" alt="Data Analysis with Excel" class="certificate-image" style="width:100%; height:auto;">
+                <div class="certificate-info">
+                    <h3 class="certificate-title">Data Analysis with Excel</h3>
+                    <p>Completed a certification course on Excel and data analysis.</p>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <img src="python_programming.png" alt="Python Programming" class="certificate-image" style="width:100%; height:auto;">
+                <div class="certificate-info">
+                    <h3 class="certificate-title">Python Programming</h3>
+                    <p>Completed a certification course on Python programming.</p>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <img src="chat.png" alt="ChatGPT Advanced Data Analysis" class="certificate-image" style="width:100%; height:auto;">
+                <div class="certificate-info">
+                    <h3 class="certificate-title">ChatGPT Advanced Data Analysis</h3>
+                    <p>Completed a certification course on advanced data analysis using ChatGPT.</p>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <img src="Excel.png" alt="EXCEL" class="certificate-image" style="width:100%; height:auto;">
+                <div class="certificate-info">
+                    <h3 class="certificate-title">EXCEL</h3>
+                    <p>Completed a certification course on advanced data analysis using ChatGPT.</p>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <img src="frontend.png" alt="Front-end" class="certificate-image" style="width:100%; height:auto;">
+                <div class="certificate-info">
+                    <h3 class="certificate-title">Front-end</h3>
+                    <p>Completed a certification course on advanced data analysis using ChatGPT.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="internships">
+        <div class="container">
+            <h2 class="section-title">Internships</h2>
+            <div class="internship-grid">
+                <div class="internship-card">
+                    <img src="python.png" alt="Software Engineer Intern" class="internship-image">
+                    <div class="internship-info">
+                        <h3 class="internship-title">Software Engineer Intern</h3>
+                        <p class="internship-company">Karunadu Technologies Pvt. Ltd.</p>
+                        <p class="internship-date">June 2021 - June 2021</p>
+                        <p class="internship-description">Worked on building scalable web applications using React and Node.js.</p>
+                    </div>
+                </div>
+                <!-- Add more internship cards here as needed -->
+            </div>
+        </div>
+    </section>
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h3>Web Development</h3>
+                        <p>HTML, CSS, JavaScript, React</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <h3>Data Analysis</h3>
+                        <p>Python, MySQL, Power BI</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cogs skill-icon"></i>
+                        <h3>Software Engineering</h3>
+                        <p>Java, Python, C</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cloud skill-icon"></i>
+                        <h3>Cloud Technologies</h3>
+                        <p>AWS, Docker</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <form name="contactForm" class="contact-form" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+    <p>&copy; 2024 Bharath R. All rights reserved.</p>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/bharath-radhakrishna23" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Bharath-2906/pes2ug21cs803" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.hackerrank.com/profile/bharathsuryavan1" target="_blank">
+            <i class="fab fa-hackerrank"></i> <!-- Assuming Hackerrank uses this icon -->
+        </a>
+    </div>
+</footer>
+<script>
+        function validateForm() {
+            const name = document.forms["contactForm"]["name"].value.trim();
+            const email = document.forms["contactForm"]["email"].value.trim();
+            let isValid = true;
+            let errorMessage = "";
+
+            if (name === "") {
+                errorMessage += "Name must be filled out\n";
+                isValid = false;
+            }
+            if (email === "") {
+                errorMessage += "Email must be filled out\n";
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                errorMessage += "Please enter a valid email address\n";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                alert(errorMessage);
+            }
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Add event listener to the form
+        document.forms["contactForm"].addEventListener("submit", function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+    </script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init("bharathradhakrishna23@gmail.com"); // Replace with your EmailJS user ID
+    })();
+
+    function sendEmail(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        const templateParams = {
+            name: name,
+            email: email,
+            message: message
+        };
+
+        emailjs.send('service_hoeevyu', 'template_91xtwld', templateParams)
+            .then(function(response) {
+                alert('Message sent successfully!');
+            }, function(error) {
+                console.error('Error:', error);
+                alert('There was an error sending your message.');
+            });
+    }
+</script>
+
+</body>
+</html>
